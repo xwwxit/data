@@ -1,0 +1,24 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: demo
+  datasource:
+    url: jdbc:mysql://172.16.0.32:3306/mysql?useUnicode=true&useSSL=false&characterEncoding=utf-8
+    username: root
+    password: 'Kite.123'
+    driver-class-name: com.mysql.jdbc.Driver
+    max-idle: 10
+    max-wait: 1000
+    min-idle: 5
+    initial-size: 5
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  config-location: classpath:mybatis-config.xml
+pagehelper:
+   helper-dialect: mysql
+   reasonable: true
+   support-methods-arguments: true
+   params:
+      count: countSql
+   page-size-zero: true

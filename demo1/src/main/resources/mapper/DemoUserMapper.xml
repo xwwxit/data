@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.DemoUserMapper" >
+
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.DemoUser" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="VARCHAR" />
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+        <result column="tags" property="tags" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getUserInfo" resultMap="BaseResultMap">
+        select
+        *
+        from userDemo
+    </select>
+
+    <select id="getMessageById" resultType="com.example.demo.entity.DemoUser" parameterType="String">
+        select * from userDemo where id =#{id}
+    </select>
+
+</mapper>
