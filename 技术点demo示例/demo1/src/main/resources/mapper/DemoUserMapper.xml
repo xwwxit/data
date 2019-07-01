@@ -19,7 +19,12 @@
     <select id="getMessageById" resultType="com.example.demo.entity.DemoUser" parameterType="String">
         select * from userDemo where id =#{id}
     </select>
+
     <select id="getEmpInfo" resultType="map">
         select * from emp
     </select>
+
+    <insert id="saveDemoUserByJson">
+        insert  into userdemo(id,username,age,birthday,tags) values (#{user.id},#{user.username},#{user.age},#{user.birthday},#{user.tags});
+    </insert>
 </mapper>

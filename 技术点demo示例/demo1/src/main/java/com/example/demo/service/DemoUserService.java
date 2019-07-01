@@ -22,4 +22,6 @@ public interface DemoUserService {
 
 
     List<Map<String,Object>> getEmpInfo();
+
+    int saveUser(DemoUser demoUser);
 }

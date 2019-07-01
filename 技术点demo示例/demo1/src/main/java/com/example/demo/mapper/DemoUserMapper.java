@@ -15,7 +15,7 @@ public interface DemoUserMapper {
 
     DemoUser getMessageById(String id);
 
-    void saveDemoUserByJson(@Param("user") DemoUser user);
+    int saveDemoUserByJson(@Param("user") DemoUser user);
 
     List<Map<String,Object>> getEmpInfo();
 }

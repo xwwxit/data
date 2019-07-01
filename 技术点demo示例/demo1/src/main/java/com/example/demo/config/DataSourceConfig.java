@@ -32,12 +32,14 @@ public class DataSourceConfig {
     public DataSource mysqlDataSource(){
         return DataSourceBuilder.create().build();
     }
+
     //数据源2
     @Bean(name = "oracle")
     @ConfigurationProperties(prefix = "spring.datasource.druid.oracle")
     public DataSource oracleDataSource(){
         return DataSourceBuilder.create().build();
     }
+
     //配置动态数据源，通过aop切换数据源
     @Primary
     @Bean(name = "dynamicDataSource")
@@ -52,11 +54,12 @@ public class DataSourceConfig {
         dynamicDataSource.setTargetDataSources(dsMap);
         return dynamicDataSource;
     }
+
     /**
      * 配置注解事物
     @Transactional
     @return */
-    @Bean
+    @Bean(name = "transactionManager")
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
     }

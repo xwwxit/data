@@ -73,11 +73,31 @@ public class DemoController {
         return  new ResultBean(demoUserService.getMessageById(id));
     }
 
+    /**
+     * 获取oracle中的数据
+     * @return
+     */
     @GetMapping("/getEmpInfo")
     @ResponseBody
     public ResultBean getEmpInfoTest(){
         return new ResultBean(demoUserService.getEmpInfo());
     }
 
+    /**
+     *
+     * 插入数据到mysql中的demoUser表
+     */
+    @PostMapping("/saveUser")
+    @ResponseBody
+    public ResultBean saveDemoUser(@RequestBody String params){
+        JSONObject jsonObject = JSON.parseObject(params);
+        DemoUser demoUser = new DemoUser();
+        demoUser.setAge(jsonObject.getString("age"));
+        demoUser.setBirthday(DateUtil.stringToDate(jsonObject.getString("birthday"),"yyyy-MM-dd"));
+        demoUser.setUsername(jsonObject.getString("username"));
+        demoUser.setId(jsonObject.getString("id"));
+        demoUser.setTags(jsonObject.getString("tags"));
+        return new ResultBean(demoUserService.saveUser(demoUser));
+    }
 }
 
