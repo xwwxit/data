@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.annotation.DataSource;
 import com.example.demo.annotation.pagehelpservice;
 import com.example.demo.entity.DemoUser;
 import com.example.demo.mapper.DemoUserMapper;
@@ -21,7 +22,7 @@ public class DemoUserServiceImpl implements DemoUserService {
     @Autowired
     private DemoUserMapper demoUserMapper;
 
-
+    @DataSource(name = "mysql")
     @Override
     public List<Map<String,Object>> getUserInfo() {
         return demoUserMapper.getUserInfo();
@@ -37,5 +38,12 @@ public class DemoUserServiceImpl implements DemoUserService {
     public PageInfo<List<Map<String,Object>>> getPageUserInfo(){
         return new PageInfo(demoUserMapper.getUserInfo());
     }
+
+    @DataSource(name = "oracle")
+    @Override
+    public List<Map<String, Object>> getEmpInfo() {
+        return  demoUserMapper.getEmpInfo();
+    }
+
 
 }

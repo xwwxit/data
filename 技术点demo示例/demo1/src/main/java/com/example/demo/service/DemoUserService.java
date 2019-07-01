@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.DemoUser;
 import com.github.pagehelper.PageInfo;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Map;
@@ -20,4 +21,5 @@ public interface DemoUserService {
      PageInfo<List<Map<String,Object>>> getPageUserInfo();
 
 
+    List<Map<String,Object>> getEmpInfo();
 }
