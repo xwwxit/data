@@ -72,6 +72,7 @@ public class DemoController {
     public ResultBean getDemoUserById(@PathVariable String id){
         return  new ResultBean(demoUserService.getMessageById(id));
     }
+
     @GetMapping("/getEmpInfo")
     @ResponseBody
     public ResultBean getEmpInfoTest(){

@@ -27,19 +27,17 @@ import java.util.Map;
 public class DataSourceConfig {
 
     //数据源1
-
-    @Bean(name = "datasource1")
+    @Bean(name = "mysql")
     @ConfigurationProperties(prefix = "spring.datasource.druid.mysql")
     public DataSource mysqlDataSource(){
         return DataSourceBuilder.create().build();
     }
     //数据源2
-    @Bean(name = "datasource2")
+    @Bean(name = "oracle")
     @ConfigurationProperties(prefix = "spring.datasource.druid.oracle")
     public DataSource oracleDataSource(){
         return DataSourceBuilder.create().build();
     }
-
     //配置动态数据源，通过aop切换数据源
     @Primary
     @Bean(name = "dynamicDataSource")
@@ -49,8 +47,8 @@ public class DataSourceConfig {
         dynamicDataSource.setDefaultTargetDataSource(mysqlDataSource());
         // 配置多数据源
         Map<Object, Object> dsMap = new HashMap();
-        dsMap.put("datasource1", mysqlDataSource());
-        dsMap.put("datasource2", oracleDataSource());
+        dsMap.put("mysql", mysqlDataSource());
+        dsMap.put("oracle", oracleDataSource());
         dynamicDataSource.setTargetDataSources(dsMap);
         return dynamicDataSource;
     }
